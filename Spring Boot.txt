@@ -1,0 +1,632 @@
+Spring Boot is a open source java file used to applications 
+it provides an eaiser and faster way to setup configuration and run both simple and web page applications
+Spring boot is spring module that provides rapid applicatiom development
+It is used to create a spring based application that you can run based on minimal configuration.
+(refer to a diagram)
+
+
+
+Spring boot is a combination of spring frame work 
+
+Note:-
+In spring boot there is no requriment of xml file (configuration file)at all.
+
+Why spring boot?
+
+-The dependency Injection approach is also used in spring boot 
+
+- It provides powerful database transaction management 
+
+It simpilfies integration of other java files like hibernate ,sturts,filters,ejb,spring etc
+
+It reduces the development time and cost 
+
+
+
+Features of spring boot
+
+Auto configuration file
+Standalone (independent on others)
+Spring Boot Starters
+Embedded web servers
+Spring Boot Actuator
+Spring Boot CLI
+Automatic Testing 
+Security(imp)
+Data Access 
+Spring Boot Intializer
+Support Microservices
+
+
+Advantages of Spring Boot:-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+1)There is no requirement of configuration file
+2)It offers a lot of plugins
+3)It offers a CLI for developing and testing  spring boot applications
+4)It increases the productivity and reduces the develop time
+
+
+Version
+-=-=-=-=-=-=-=-=-=-
+The latest version of spring boot is 3.o 
+The latest updates are:
+	Infrastructure
+	Spring FrameWork of 5.0
+	
+Spring Boot Architecture :-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-
+It consists of four different layers.
+Each Layer will have a comuncation in a bidirectional ways or in both the ways.
+The four layers of spring boot are 
+	Presentation Layer 
+	Business Layer
+	Persistence Layer
+	Database Layer
+
+Presentation Layer : -It handles all https request and transefers same to the bussinees layer
+Business Layer :- It handles all the busineess logic of the application
+Persistence Layer:- it handles all the storage related logics
+Database :-Int this crud operations can be performed
+
+
+
+Requirements of Spring Booot
+1. Maven
+2. Java 17 or above
+3. Spring Framework 5.o
+4. Spring Tool Suite(STS)
+	-IDE/Plugin
+
+
+Spring Boot Project
+/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+
+In order to work on spring boot application there are three ways to build or create a project
+
+	1. Using Spring intializer
+	2. Using STS(IDE)
+	3. Spring CLIs
+
+Where to have HTML AND JSP file:
+========================================
+demo/
+	-ser/main/java
+		- com.example.demo
+			-DemoApplication.java
+	-src/main/resources
+		- application.properties
+		- static 
+			- images
+		- templates
+			-HTML files/ jsp files(view pages-front end pages)
+		
+		
+
+Example:(How to access/render an html page)
+--------------------------------------------
+
+Development process:
+--------------------
+
+DemoApplication.java: open spring intilir (chnaged artifact name to htmldemo) and genarte the jar file with spring web and thymeleaf dependencies- (update the project after importing the file)
+-----------------------
+create a class named Rest.java by clicking on the package htmldemo(add @Restcontroller on top of Rest class)
+
+Rest.java:
+------------
+@RestController
+public class Rest {
+	@GetMapping("/home")
+	public ModelAndView gethome() {
+		return new ModelAndView("home");
+	}
+
+}
+
+- create an home.html for viewing on front end
+- update application.properties with 
+server.port=9000
+
+run the htmldemoapplication.java on java app and give "localhost:9000/home"
+
+ 
+Example:2 (How to access/render an jsp page)
+--------------------------------------------
+- create a new project through spring initiliser
+Rest.java:
+----------
+@Controller
+public class Rest {
+	@GetMapping("/home")
+	public String home() {
+		return "home";
+	}
+
+}
+home.jsp:
+-------------
+<!DOCTYPE html>
+<html>
+<body>
+this is jsp file
+</body>
+</html>
+
+application.properties:
+-------------------------
+server.port=9007
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.jsp
+
+
+Example:3 (Render a jsp which displays a form)
+----------------------------------------------------
+form should contains:
+	first name
+	last name
+	mobile number
+	submit button
+
+
+Example:4(when click on submit of a form, it renders another jsp file displaying details submitted successfully)
+-------------------------------------------------------------------------------------------------------------------
+
+Rest.java:
+-----------
+package com.example.jspdemo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RestController;
+
+@Controller
+public class Rest {
+	@GetMapping("/home")
+	public String home() {
+		return "home";
+	}
+	
+	@GetMapping("/form")
+	public String form() {
+		return "form";
+	}
+	@GetMapping("/success")
+	public String success() {
+		return "success";
+	}
+	
+
+}
+
+form.jsp:
+------------
+<!DOCTYPE html>
+<html>
+<body>
+<form action="/success">
+	firstname:<input type="text" /> </br>
+	lastname:<input type="text" /> </br>
+	mobile no:<input type="text" /> </br>
+	<input type="submit" value="submit"/> 
+</form>
+</body>
+</html>
+success.jsp:
+----------------
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+</head>
+<body>
+ <h1> details submitted sucessfully</h1>
+</body>
+</html>
+
+Example:5 Display a form with fn,ln and mobile no. When click on submit display the detials on a browser which are entered in form
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Example:6 Spring Boot Example(Using Entity and Model)
+---------------------------------------------
+-create maven project Spring Intilier
+-Add dependencies: Spring web, themeLeaf, devtools
+-generate and import it in ide
+-add manual dependency
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+-EntitymodelApplication.java- no changes
+- create a new class (Entity class) name it as student
+
+
+JFSD BUSINESS SYSTEM(Online social media platform):
+-------------------------------------------------------
+
+- crete a new project (name with your business system)
+- Add dependencies( Web,Thyme Leaf , dev tools)
+- Click on generate and import the same into your IDE
+
+
+-----------------------------------------------|
+Spring boot application on project components: |
+-----------------------------------------------|
+- application.properties:
+the purpose of the  component is to define the properties of spring boot application
+server.port=9004
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.jsp
+
+-annotations:
+Annotation is a form of data that provides about a application.
+
+Corespring Annoatation:
+------------------------
+(anotations of spring framework)
+- @Required : 
+* It is a method level anotation
+* This anotation will be used to a specific method which is mandatory to execute
+- @ComponentScan :
+* It is used to scan the pakages
+- @Bean:
+* It is a method level anotation
+* Alternate of xml bean tag
+* It tells the method to produce a bean to be managed by spring container
+- @Component:
+* It is a class level anotation
+* This anotation is used to mark a specific class as a bean class
+- @Repository:
+* class-level annotation.
+* used to a class where DAO implements.
+ex:     @Repository
+  public class demo
+  {
+
+  }
+- @Service:
+* It is a class level anoation
+* It is used for a class where the business logic of the application is defined
+
+(anontations for spring boot)
+
+- @SpringBootApplication:
+* It is a class level anotation
+* It is used for starting point of the appilcation represent(main method)
+*  Spring boot application is a combination of three anotations earlier! 
+	1. @EnableAutoConfiguaration
+	2. @Configuration
+	3. @ComponentScan
+
+- @RestController
+* It is a class level anotation
+* get,post,delete
+
+Note: Updated anotation of the same is @Controller
+Example:
+- @RequestMapping
+* It is used for any http service request
+- @GetMapping
+* It is a method level anotation
+- @PostMapping
+* It is a method level anotation
+- DeleteMapping
+* It is method level anotation
+- @DependencyManagement
+- @SpringStarters : It is a collection or set of dependencies that we can include in your application!
+- @Repository : logic file where this file will interact with DB
+
+Spring Starters
+SS web
+SS test
+SS parent
+SS Actuator
+SS JPA
+SS thymeleaf
+SS devtools
+SS Security
+
+Spring JPA:
+---------------
+* JPA(Java persistant API)
+* API : Collections of many packages
+* Purpose of JPA: Inorder to make a database connectivity 
+
+
+Story:
+------
+	EP -> JDBC
+	   -> JPA(CreateQuery, NamedQuery)
+	Jfsd -> ORM(Hiberante)
+	        object -> Database
+	     -> DAO(Spring)
+		object -> Database
+	     -> DAO(Spring boot)
+		object -> Database
+
+- Spring revision
+
+* Auto configuration is one of the main advantage in spring boot where in spring and hibernate we have to configure the file
+* EntityManager is a main component or a class which is used to create queries
+* EntityManager is available in JPA
+* In spring boot framework JPA comes along with Hiberante
+
+Example:7   (JPA-CRUD)
+-------------
+Design a SpringBoot Application  to perform CRUD operations on a database using Spring JPA /Hibernate  
+
+Application:
+----------------
+
+1. Create a new project  JPACRUD using SI
+
+2.Add dependencies
+ Spring Boot DevTools 
+ Spring Data JPA SQL
+ MySQL Driver SQL
+ 
+3.click on generate --> extract --> import (Eclipse IDE)
+4. add manual Dependencies --> Nil
+5.application.properties inside resource folder  // for minimal configuration
+
+ spring.datasource.url=jdbc:mysql://localhost:3306/klu                   //klu is database name
+ spring.datasource.username=root
+ spring.datasource.password=
+ 
+ spring.jpa.hibernate.ddl-auto=update
+
+6.Entity Class(Student.java)
+
+ @Entity
+ @Table(name="student")
+ public class Student
+ {
+  @Id
+  @Column(name="tid")
+  int id;
+
+  @Column(name="tfname")
+  String firstname;
+
+  @Column(name="tlname")
+  String lastname;
+
+  //generate parameterized constructor
+  //default constructor
+  //generate setters and getters
+  
+ }
+
+
+StudentDAO.java (Interface)
+
+public interface StudentDAO
+{
+ public void insertStudent(Student s);
+ public void deleteStudent(int id);
+}
+
+
+StudentDAOClass (Implementation Class)
+
+@Repository
+public class StudentDAOClass implements StudentDAO
+{
+
+ EntityManager em; 
+ 
+ @Autowired
+ //add constructor  for em
+
+ @Transactional
+ //add unimplemented methods
+
+}
+
+Logic File( JpacrudApplication.java)
+
+package com.example.JPACRUD;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class JpacrudApplication {
+
+ public static void main(String[] args) {
+  SpringApplication.run(JpacrudApplication.class, args);
+ }
+ 
+ @Bean
+ public CommandLineRunner commandLineRunner (StudentDAO stddao)
+ {
+  return runner -> {
+   createStudent(stddao);
+  };
+ }
+
+ private void createStudent(StudentDAO stddao) 
+ {
+  Student s=new Student(111,"ABC","XYZ");
+  stddao.insertStudent(s);
+  
+ }
+
+}
+
+
+
+REST-CRUD(Representatinal state transfer):
+------------------------------------------------
+- REST is a standard and popular architechture to represent web application(not an api)
+- REST contains different HTTP methods
+	GET
+	POST
+	PUT
+	DELETE
+
+Note: Install POSTMAN
+Example 8:   Spring boot application to perform CRUD operations on a database using REST (REST_CRUD)
+--------------------------------------------------------------------------------------------------------
+
+Representational state transfer.
+-> standard/popular architecture used to design web applications (not an API)
+-> rest contains different http service methods. they are get, put, post, delete
+
+NOTE: install postman
+
+spring boot application to perform crud operations on a database using rest (rest crud)
+
+create a new project jpacrud using spring intializr
+add dependencies - web, dev tools, spring data jpa,mysql driver
+generate and import project
+
+run application.java 
+postman-> GET -> http://localhost:9055/all
+
+post -> http://localhost:9055/student 
+  choose raw data and select "json"
+
+  {
+  "id":1111,
+  "firstname": "Mokshitha",
+  "lastname": "Narra"
+}
+
+click send button.
+
+check mysql database and see if data got inserted.
+
+
+============================================================================================================================================================
+------------------
+Spring boot MVC: (Model view Controller)
+------------------
+
+- MVC is a standard architecture or deisgn pattern which is used to design a web application
+- Model: It represents the bussiness logic of the application(backend)
+- View: It represents the presentation logic of our application(frontend)
+- Controller: Which acts as an interface between model and view
+
+Example : Spring boot application to perform crud operations on DB using springboot MVC
+----------------------------------------------------------------------------------------------
+Application:
+step1 - Create a maven project MVCCRUD
+step2 - add dependencies jpa , mysql, devtools, web, thymeleaf
+step3 -click on generate --> extract --> import (Eclipse IDE)
+step4 - add manual Dependencies --> Nil
+step5 - application.propoerties
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=Thanmaikora@2003
+spring.jpa.hibernate.ddl-auto=update
+
+step6 - same as previous
+
+
+Spring boot Starter Thymeleaf:
+--------------------------------
+- Thymeleaf is a modern server side java template engine that can be used to create html,xml,js,css files
+- thymeleaf is integrated with the spring framework and can be used in the view layer of the spring MVC application
+- Thymeleaf is a natural templating engine that allows us to prototype templates without a backend
+
+
+Spring boot Starter Parent:
+-----------------------------
+- It is a special started project that provides default configurations for our application and a complete dependency tree to quickly build our spring boot project
+- It inherits dependency management from spring boot dependency which is the parent to the spring boot starter
+- Once we have declared to starter parent in our project ,we can pull any dependency from parents by just declaring in our dependency tag.
+
+
+Spring boot Actuator:
+-----------------------------
+- The actuator provides several features like health checkup , auditing jvm metrix,  login info, cache statistics etc...
+- This dependecy will take care of monitoring and managing the spring boot application
+
+*** Spring boot devtools:***
+----------------------------------
+
+- It is a module that provides several features to improve the development experience working with spring boot
+- Some of the imp features provided by Spring boot devtools are:
+	Autometic restart
+	live relord
+	remote debuging
+	remote update
+
+
+Example: Render a form (Registration form ) when click on submit details has to be stored in database 
+--------
+
+
+Application:
+------------
+1. Create a project "sbdb" using spring intializer
+2. Add dependencies -> web, devtools, thymeleaf,data jpa, mysql connector
+3. generate and import
+4. no manual dependencies to be added
+5. application.properties
+6. Entity class(student.java)
+7. Create an inteface (StudentRepository.java)
+
+public interface StudentRepository extends JpaRepository<Student,Integer>{
+
+}
+
+8. Create an Interface(StudentDAO.java)
+
+public interface StudentDAO {
+	public void insertStudent(Student s);
+}
+
+9. implementation class(StdentDAOClass.java)
+
+Spring Started Security:
+------------------------
+It is a dependency which is used to provide security to the web application created using spring boot
+
+* This framework tragets on 2 major areas they are:
+1. athentication
+2. Authorisation
+
+1. Athentication:
+--------------------
+It is a process of verifing a specific user is valid or invalid user or not!
+
+2. Autherisation:
+-------------------
+It is a process ,to allow specific user to perform diff actions on a application
+
+* The basic security to a spring boot application can be implemented in 2 ways
+1. default security
+2. custom security
+
+example: Spring boot application with basic security
+-----------
+1. create a project "sbsecurity" using SI
+2. ADD dependencies-> web, devtools, springsecurity
+3. now run the sbsercurityApplication.java
+4. a default password will be generated now run 8080 port (default) give username as user and paste the default pass which was given in concole
+5. whitelabel error - sucess
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
